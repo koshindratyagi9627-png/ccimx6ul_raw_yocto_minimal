@@ -1,0 +1,1 @@
+# ccimx6ul_raw_yocto_minimal
