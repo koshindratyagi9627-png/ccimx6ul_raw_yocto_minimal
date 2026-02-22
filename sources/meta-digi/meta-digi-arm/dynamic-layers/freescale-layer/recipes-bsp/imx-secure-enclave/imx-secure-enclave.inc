@@ -1,0 +1,32 @@
+# Copyright 2021-2025 NXP
+
+SUMMARY = "NXP i.MX SECURE ENCLAVE library"
+DESCRIPTION = "NXP IMX SECURE ENCLAVE library"
+SECTION = "base"
+LICENSE = "BSD-3-Clause"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=8636bd68fc00cc6a3809b7b58b45f982"
+
+DEPENDS = " mbedtls openssl"
+
+SRC_URI = "${SECURE_ENCLAVE_LIB_SRC};branch=${SRCBRANCH}"
+SECURE_ENCLAVE_LIB_SRC ?= "git://github.com/NXP/imx-secure-enclave.git;protocol=https"
+SRCBRANCH = "lf-6.6.52_2.2.1"
+SRCREV = "4f0340fb4cf6b16a64c7d65281b4880c5d1cd453"
+
+# Set package version to the release, so it overrides the recipe in meta-freescale
+PV = "lf-6.6.52_2.2.1"
+
+S = "${WORKDIR}/git"
+
+PLAT ?= "UNDEFINED"
+
+EXTRA_OEMAKE = "PLAT=${PLAT} OPENSSL_PATH=${STAGING_INCDIR} MBEDTLS_PATH=${STAGING_DIR_HOST}${datadir}/mbedtls-source"
+
+TARGET_CC_ARCH += "${LDFLAGS}"
+
+do_install() {
+	oe_runmake -C ${S} DESTDIR=${D} install_tests
+}
+
+FILES:${PN} += "${datadir}/se"
+RDEPENDS:${PN} += "bash"

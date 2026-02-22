@@ -1,0 +1,43 @@
+From: David Escalona <david.escalona@digi.com>
+Date: Mon, 16 Sep 2024 18:58:22 +0200
+Subject: [PATCH 2/4] semantic-segmentation: reduce font size for big screens
+
+Signed-off-by: David Escalona <david.escalona@digi.com>
+---
+ .../files/stai-mpu/stai_mpu_semantic_segmentation.py      | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/stai-mpu/stai_mpu_semantic_segmentation.py b/stai-mpu/stai_mpu_semantic_segmentation.py
+index 8252e1c..d0ee636 100644
+--- a/stai-mpu/stai_mpu_semantic_segmentation.py
++++ b/stai-mpu/stai_mpu_semantic_segmentation.py
+@@ -347,12 +347,12 @@ class MainWindow(Gtk.Window):
+                self.ui_icon_exit_size = '50'
+                self.ui_icon_st_size = '160'
+                self.ui_icon_label_size = '64'
+         elif window_constraint <= 1080:
+                #Display 1920x1080
+-               self.ui_cairo_font_size = 33
+-               self.ui_cairo_font_size_label = 48
++               self.ui_cairo_font_size = 23
++               self.ui_cairo_font_size_label = 38
+                self.ui_icon_exit_size = '50'
+                self.ui_icon_st_size = '160'
+                self.ui_icon_label_size = '64'
+
+     def main_ui_creation(self,args):
+@@ -583,12 +583,12 @@ class OverlayWindow(Gtk.Window):
+                self.ui_icon_exit_size = '50'
+                self.ui_icon_st_size = '160'
+                self.ui_icon_label_size = '64'
+         elif window_constraint <= 1080:
+                #Display 1920x1080
+-               self.ui_cairo_font_size = 33
+-               self.ui_cairo_font_size_label = 48
++               self.ui_cairo_font_size = 23
++               self.ui_cairo_font_size_label = 38
+                self.ui_icon_exit_size = '50'
+                self.ui_icon_st_size = '160'
+                self.ui_icon_label_size = '64'
+
+     def overlay_ui_creation(self,args):

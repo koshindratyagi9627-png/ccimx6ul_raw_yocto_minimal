@@ -1,0 +1,11 @@
+[Unit]
+Description=LVGL Demo Application
+
+[Service]
+Type=forking
+PIDFile=/run/lvgl-demo.pid
+ExecStart=/etc/lvgl-demo-init start
+ExecStop=/etc/lvgl-demo-init stop
+
+[Install]
+WantedBy=multi-user.target
